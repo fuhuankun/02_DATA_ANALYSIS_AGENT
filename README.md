@@ -52,10 +52,11 @@ source .env
 Note: API key can be input during run time, if you don't set .env .
 ```
 
-## 4. Configuration
+4. Configuration
 
+```text
 The project uses `config.yaml` for dataset and tool paths. Example:
-
+```
 ```yaml
 data:
   DATA_PATH: data/pipeline_data.parquet
