@@ -62,9 +62,9 @@ data:
   DATA_PATH: data/pipeline_data.parquet
   DATASET_NAME: pipeline_data #you don't need to change this, this is run time data name.
 ```
-
+```text
 - Update `DATA_PATH` to your dataset name, you will need to copy your data to this folder, it can be csv, parquet, or other format which will be read by DuckDB.
-
+```
 ---
 
 ---
