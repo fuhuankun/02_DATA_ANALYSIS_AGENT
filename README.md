@@ -109,5 +109,5 @@ python -m src/main.py
 - Add more analysis tools (time series forecasting, regression, classification).  
 - Improve guardrails for safety.  
 - Using MCP/A2A for some analysis or information retrieval.
-- Add some evaluation for quality.
+- Add some evaluations for runtime quality.
 - Expose the system via API or UI for interactive use.  
