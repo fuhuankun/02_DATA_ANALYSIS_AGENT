@@ -32,23 +32,27 @@ cd 02_DATA_ANALYSIS_AGENT
 2. Create a virtual environment and install dependencies:  
 
 ```bash
-bash init.sh
+bash init.sh  # if your system does not use python3, edit init.sh and replace with python
 source .venv/bin/activate   # Linux/Mac
 .venv\Scripts\activate      # Windows
 ```
 
-  If your system does not use python3 command, change python3 to python in init.sh
-
 3. Set up environment variables (`.env` or config file):  
 
+
+Create a `.env` file:
 
 ```bash
 touch .env
 ```
-  In your .env, you should have:
-  OPENAI_API_KEY=your_api_key_here
 
-Load your .env file
+Add your API key:
+
+```text
+OPENAI_API_KEY=your_api_key_here
+```
+
+Load your `.env` file:
 
 ```bash
 source .env
