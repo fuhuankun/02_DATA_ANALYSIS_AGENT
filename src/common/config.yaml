@@ -1,0 +1,15 @@
+data:
+  # data_path: ./data/pipeline_data.parquet
+  DATASET_PATH: data/COVID-19_Deaths.csv
+  DATASET_NAME: pipeline_data ##during runtime, you need to use this name to load the dataset
+
+# LLM Configuration
+llm:
+  model: gpt-4o
+  temperature: 0.2
+  max_tokens: 1500
+  # api_key_path: ../../../CodeBase/openai_key.txt
+
+results:
+  OUTPUT_PATH: results
+  log_path: logs
