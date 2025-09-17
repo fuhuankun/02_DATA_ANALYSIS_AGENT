@@ -62,7 +62,7 @@ data:
   DATASET_NAME: pipeline_data #you don't need to change this, this is run time data name.
 ```
 
-- Update `DATA_PATH` to your dataset location, it can be csv, parquet, or other format which will be read by DuckDB.
+- Update `DATA_PATH` to your dataset name, you will need to copy your data to this folder, it can be csv, parquet, or other format which will be read by DuckDB.
 
 ---
 
@@ -87,23 +87,27 @@ python -m src/main.py
 
 - **Schema Inference** → `infer_schema()`  
 - **SQL Execution** → `execute_sql(query: str)`  
-- **Outlier Detection** → `detect_outliers(column: str)`  
-- **Clustering Anlysis** → `cluster_data(columns: list[str], k: int)`  
-- **Trend Analysis** → `trend_analysis(date_col: str, value_col: str)`  
+- **Correlation Analysis** → `correlation_analysis` 
+- **Outlier Detection** → `detect_outliers`  
+- **Clustering Anlysis** → `clustering_analysis`  
+- **Trend Analysis** → `trend_analysis`  
 
 ---
 
 ## 📌 Notes  
 
-- Data is loaded into DuckDB as a **temp table (`dataset`)** for SQL queries.  
+- Data is loaded into DuckDB as a **temp table (`dataset_name`)** for SQL queries.  
 - Python execution tools pull from DuckDB only when needed → avoids keeping global `df` in memory.  
-- Visualizations and large data from python are automatically stored in `./results`.  
+- Visualizations and large data from python are automatically stored in `results\` or `data\`.  
 - PlannerAgent automatically **injects schema into subagents** via context.  
 
 ---
 
 ## ✅ Next Steps  
 
+- Make tools more general and robust
 - Add more analysis tools (time series forecasting, regression, classification).  
 - Improve guardrails for safety.  
+- Using MCP/A2A for some analysis or information retrieval.
+- Add some evaluation for quality.
 - Expose the system via API or UI for interactive use.  
