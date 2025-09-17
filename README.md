@@ -40,23 +40,29 @@ source .venv/bin/activate   # Linux/Mac
 3. Set up environment variables (`.env` or config file):  
 
 
-Create a `.env` file:
-
 ```bash
+# create .env
 touch .env
-```
-
-Add your API key:
-
-```text
-OPENAI_API_KEY=your_api_key_here
-```
-
-Load your `.env` file:
-
-```bash
+# Add your API key
+echo "OPENAI_API_KEY=your_api_key_here" >> .env
+# Load your .env file
 source .env
 ```
+### Note: API key can be input during run time, if you don't set .env .
+
+## 4. Configuration
+
+The project uses `config.yaml` for dataset and tool paths. Example:
+
+```yaml
+data:
+  DATA_PATH: data/pipeline_data.parquet
+  DATASET_NAME: pipeline_data #you don't need to change this, this is run time data name.
+```
+
+- Update `DATA_PATH` to your dataset location, it can be csv, parquet, or other format which will be read by DuckDB.
+
+---
 
 ---
 
@@ -67,15 +73,11 @@ source .env
 Be sure you are under project root (02_DATA_ANALYSIS_AGENT)
 
 ```bash
+# for one time run
 python -m src/main.py "your question"
-```
-
-Or:
-```bash
+# for multi-turn run
 python -m src/main.py
 ```
-
-for multi-turn.
 
 ---
 
