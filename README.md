@@ -48,7 +48,9 @@ echo "OPENAI_API_KEY=your_api_key_here" >> .env
 # Load your .env file
 source .env
 ```
-### Note: API key can be input during run time, if you don't set .env .
+```text
+Note: API key can be input during run time, if you don't set .env .
+```
 
 ## 4. Configuration
 
