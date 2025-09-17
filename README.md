@@ -1,43 +1,101 @@
-# Data Analysis Agent
+# 📊 Data Analysis Agent System  
 
-This project provides an agent-based system for data analysis using large language models (LLMs).
+An **agentic data analysis framework** powered by OpenAI Agents SDK and DuckDB.  
+The system automatically decides whether a user’s question should be answered via:  
 
-## Features
+- **SQL Retrieval Agent** → uses SQL to query the dataset.  
+- **Advanced Data Analysis Agent** → uses Python for deeper insights (e.g., trends, clustering, outliers, correlations, plotting).  
 
-- Automated data analysis workflows
-- Integration with LLMs for advanced analytics
-- Modular and extensible architecture
+Schema inference, planning, execution, and visualization are all automated.  
 
-## Getting Started
+---
 
-1. Clone the repository:
-    ```bash
-    git clone <repository-url>
-    ```
-2. Install dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
-3. Run the agent:
-    ```bash
-    python main.py
-    ```
+## 🚀 Features  
 
-## Project Structure
+- **Planner Agent** → routes questions to the right subagent.  
+- **Schema Inference Tool** → extracts dataset schema (columns, types, samples) and generates a human-readable description via LLM.  
+- **SQ Retrieval Agent** → SQL query generation + execution using DuckDB.  
+- **Advanced Analysis Agent** → Python-based analysis for statistics, clustering, anomaly detection, correlations, and trend analysis.  
+- **Visualization Support** → saves plots to `./results/*`.  
 
-- `main.py` - Entry point for the agent
-- `agent/` - Core agent logic and modules
-- `data/` - Sample datasets and input files
+---
 
-## Requirements
+## ⚙️ Setup  
 
-- Python 3.8+
-- See `requirements.txt` for details
+1. Clone repo & enter project:  
 
-## License
+```bash
+git clone https://github.com/fuhuankun/02_DATA_ANALYSIS_AGENT.git
+cd 02_DATA_ANALYSIS_AGENT
+```
 
-This project is licensed under the MIT License.
+2. Create a virtual environment and install dependencies:  
 
-## Contact
+```bash
+bash init.sh
+source .venv/bin/activate   # Linux/Mac
+.venv\Scripts\activate      # Windows
+```
 
-For questions or support, please open an issue or contact the maintainer.
+If your system does not use python3 command, change python3 to python in init.sh
+
+3. Set up environment variables (`.env` or config file):  
+
+
+```bash
+touch .env
+```
+In your .env, you should have:
+OPENAI_API_KEY=your_api_key_here
+
+Load your .env file
+
+```bash
+source .env
+```
+
+---
+
+## ▶️ Usage  
+
+### Run Main Code
+
+Be sure you are under project root (02_DATA_ANALYSIS_AGENT)
+
+```bash
+python -m src/main.py "your question"
+```
+
+Or:
+```bash
+python -m src/main.py
+```
+
+for multi-turn.
+
+---
+
+## 🛠️ Tools  
+
+- **Schema Inference** → `infer_schema()`  
+- **SQL Execution** → `execute_sql(query: str)`  
+- **Outlier Detection** → `detect_outliers(column: str)`  
+- **Clustering Anlysis** → `cluster_data(columns: list[str], k: int)`  
+- **Trend Analysis** → `trend_analysis(date_col: str, value_col: str)`  
+
+---
+
+## 📌 Notes  
+
+- Data is loaded into DuckDB as a **temp table (`dataset`)** for SQL queries.  
+- Python execution tools pull from DuckDB only when needed → avoids keeping global `df` in memory.  
+- Visualizations and large data from python are automatically stored in `./results`.  
+- PlannerAgent automatically **injects schema into subagents** via context.  
+
+---
+
+## ✅ Next Steps  
+
+- Add more analysis tools (time series forecasting, regression, classification).  
+- Improve guardrails for safety.  
+- Expose the system via API or UI for interactive use.  
