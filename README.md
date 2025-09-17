@@ -86,8 +86,8 @@ python -m src/main.py
 
 ## 🛠️ Tools  
 
-- **Schema Inference** → `infer_schema()`  
-- **SQL Execution** → `execute_sql(query: str)`  
+- **Schema Inference** → `infer_schema`  
+- **SQL Execution** → `execute_sql`  
 - **Correlation Analysis** → `correlation_analysis` 
 - **Outlier Detection** → `detect_outliers`  
 - **Clustering Anlysis** → `clustering_analysis`  
