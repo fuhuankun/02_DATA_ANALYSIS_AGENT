@@ -1,8 +1,9 @@
 .venv/
-data/
-results/
+data/*
+results/*
 .env
 __pycache__/
 **/__pycache__/
 logs/
 tests/
+examples/
