@@ -7,9 +7,9 @@ The system automatically decides whether a user’s question should be answered 
 - **Advanced Data Analysis Agent** → uses Python for deeper insights (e.g., trends, clustering, outliers, correlations, plotting).  
 
 Schema inference, planning, execution, and visualization are all automated.  
-
 Ideally the data should be in cloud, and agent can connect to cloud, for demo purpose, we could use DuckDB.
 And supposely your data is not too large.
+
 ---
 
 ## 🚀 Features  
