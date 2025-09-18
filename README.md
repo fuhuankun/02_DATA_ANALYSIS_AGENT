@@ -8,6 +8,8 @@ The system automatically decides whether a user’s question should be answered 
 
 Schema inference, planning, execution, and visualization are all automated.  
 
+Ideally the data should be in cloud, and agent can connect to cloud, for demo purpose, we could use DuckDB.
+And supposely your data is not too large.
 ---
 
 ## 🚀 Features  
@@ -109,6 +111,6 @@ python src/main.py
 - Make tools more general and robust
 - Add more analysis tools (time series forecasting, regression, classification).  
 - Improve guardrails for safety.  
-- Using MCP/A2A for some analysis or information retrieval.
+- Using MCP/ACP for some analysis or information retrieval.
 - Add some evaluations for runtime quality.
 - Expose the system via API or UI for interactive use.  
