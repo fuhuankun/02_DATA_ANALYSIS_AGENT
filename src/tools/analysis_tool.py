@@ -7,64 +7,6 @@ from src.utils.db_connection import con
 from src.utils.get_config import DATASET_NAME, OUTPUT_PATH
 
 from src.utils.logger import logger
-# # 1. Summary statistics
-# @function_tool
-# def summary_statistics(columns: list[str] = None) -> dict:
-#     """
-#     Generate Python code to compute summary statistics for specified columns."""
-#     if columns:
-#         code = f"df[{columns}].describe().to_dict()"
-#     else:
-#         code = "df.describe().to_dict()"
-#     return {"generated_code": code}
-
-# # 2. Correlation matrix
-# @function_tool
-# def correlation(columns: list[str] = None) -> dict:
-#     """
-#     Generate Python code to compute correlation matrix for specified columns."""
-#     if columns:
-#         code = f"df[{columns}].corr().to_dict()"
-#     else:
-#         code = "df.corr().to_dict()"
-#     return {"generated_code": code}
-
-# # 3. KMeans clustering
-# @function_tool
-# def clustering(columns: list[str], n_clusters: int = 3) -> dict:
-#     """
-#     Generate Python code to perform KMeans clustering on specified columns."""
-#     code = (
-#         "from sklearn.cluster import KMeans\n"
-#         f"km = KMeans(n_clusters={n_clusters}, random_state=42)\n"
-#         f"clusters = km.fit_predict(df[{columns}])\n"
-#         "pd.DataFrame({'cluster': clusters}).to_dict()"
-#     )
-#     return {"generated_code": code}
-
-# # 4. Outlier detection (Z-score)
-# @function_tool
-# def detect_outliers(columns: list[str], threshold: float = 3.0) -> dict:
-#     """
-#     Generate Python code to detect outliers in specified columns using Z-score method."""
-#     code = (
-#         "from scipy import stats\n"
-#         f"z = stats.zscore(df[{columns}])\n"
-#         "outliers = (abs(z) > {threshold}).any(axis=1)\n"
-#         "df[outliers].to_dict()"
-#     ).format(threshold=threshold)
-#     return {"generated_code": code}
-
-# # 5. Trend (time series)
-# @function_tool
-# def trend_analysis(date_col: str, value_col: str) -> dict:
-#     """
-#     Generate Python code to analyze trend over time for a value column."""
-#     code = (
-#         f"df[[{date_col!r}, {value_col!r}]]"
-#         f".groupby({date_col!r}).mean().reset_index().to_dict()"
-#     )
-#     return {"generated_code": code}
 
 @function_tool
 def data_retrieval_sql(question: str, data_schema_decription: str) -> dict:
@@ -220,34 +162,6 @@ def correlation_analysis(sql_query: str, target: str) -> dict:
     return {"correlation_matrix": corr.to_dict()}
 
 
-# @function_tool
-# def detect_outliers(sql_query:str, column: str) -> dict:
-#     """
-#     Detect outliers in a numeric column using Z-score method.
-#     """
-#     logger.info("Using detect_outliers tool")
-#     time_stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-#     z_thresh = 3.0
-#     clean_query = sql_query.strip('`')  # Remove backticks if present
-#     try:
-#         df = con.execute(clean_query).fetchdf()
-#     except Exception as e:
-#         return {"error": str(e)}
-    
-#     if column not in df.columns:
-#         return {"error": f"Column {column} not in dataframe"}
-#     series = df[column]
-#     z_scores = (series - series.mean()) / series.std()
-#     outlier_pd = series[abs(z_scores) > z_thresh]
-#     outliers = outlier_pd.tolist()
-#     outlier_file = os.path.join(OUTPUT_PATH, f"outliers_{time_stamp}.csv")
-#     if len(outliers) >=5:
-#         outlier_pd.to_csv(outlier_file, index=False)
-#         # print(f"Due to large number of outliers, saved full list to {os.path.join(OUTPUT_PATH, 'outliers.csv')}")
-#         logger.info(f"Due to large number of outliers, saved full list to {outlier_file}")
-#         return {"outliers": outliers[:5], "count": len(outliers), "note": "More than 5 outliers, showing first 5"}
-#     else:
-#         return {"outliers": outliers, "count": len(outliers)}
 
 @function_tool
 def detect_outliers(sql_query: str, column: str, id_columns: list[str]) -> dict:
@@ -478,7 +392,95 @@ def clustering_analysis(
         "plots": plot_files
     }
 
+# # 1. Summary statistics
+# @function_tool
+# def summary_statistics(columns: list[str] = None) -> dict:
+#     """
+#     Generate Python code to compute summary statistics for specified columns."""
+#     if columns:
+#         code = f"df[{columns}].describe().to_dict()"
+#     else:
+#         code = "df.describe().to_dict()"
+#     return {"generated_code": code}
 
+# # 2. Correlation matrix
+# @function_tool
+# def correlation(columns: list[str] = None) -> dict:
+#     """
+#     Generate Python code to compute correlation matrix for specified columns."""
+#     if columns:
+#         code = f"df[{columns}].corr().to_dict()"
+#     else:
+#         code = "df.corr().to_dict()"
+#     return {"generated_code": code}
+
+# # 3. KMeans clustering
+# @function_tool
+# def clustering(columns: list[str], n_clusters: int = 3) -> dict:
+#     """
+#     Generate Python code to perform KMeans clustering on specified columns."""
+#     code = (
+#         "from sklearn.cluster import KMeans\n"
+#         f"km = KMeans(n_clusters={n_clusters}, random_state=42)\n"
+#         f"clusters = km.fit_predict(df[{columns}])\n"
+#         "pd.DataFrame({'cluster': clusters}).to_dict()"
+#     )
+#     return {"generated_code": code}
+
+# # 4. Outlier detection (Z-score)
+# @function_tool
+# def detect_outliers(columns: list[str], threshold: float = 3.0) -> dict:
+#     """
+#     Generate Python code to detect outliers in specified columns using Z-score method."""
+#     code = (
+#         "from scipy import stats\n"
+#         f"z = stats.zscore(df[{columns}])\n"
+#         "outliers = (abs(z) > {threshold}).any(axis=1)\n"
+#         "df[outliers].to_dict()"
+#     ).format(threshold=threshold)
+#     return {"generated_code": code}
+
+# # 5. Trend (time series)
+# @function_tool
+# def trend_analysis(date_col: str, value_col: str) -> dict:
+#     """
+#     Generate Python code to analyze trend over time for a value column."""
+#     code = (
+#         f"df[[{date_col!r}, {value_col!r}]]"
+#         f".groupby({date_col!r}).mean().reset_index().to_dict()"
+#     )
+#     return {"generated_code": code}
+
+
+
+# @function_tool
+# def detect_outliers(sql_query:str, column: str) -> dict:
+#     """
+#     Detect outliers in a numeric column using Z-score method.
+#     """
+#     logger.info("Using detect_outliers tool")
+#     time_stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+#     z_thresh = 3.0
+#     clean_query = sql_query.strip('`')  # Remove backticks if present
+#     try:
+#         df = con.execute(clean_query).fetchdf()
+#     except Exception as e:
+#         return {"error": str(e)}
+    
+#     if column not in df.columns:
+#         return {"error": f"Column {column} not in dataframe"}
+#     series = df[column]
+#     z_scores = (series - series.mean()) / series.std()
+#     outlier_pd = series[abs(z_scores) > z_thresh]
+#     outliers = outlier_pd.tolist()
+#     outlier_file = os.path.join(OUTPUT_PATH, f"outliers_{time_stamp}.csv")
+#     if len(outliers) >=5:
+#         outlier_pd.to_csv(outlier_file, index=False)
+#         # print(f"Due to large number of outliers, saved full list to {os.path.join(OUTPUT_PATH, 'outliers.csv')}")
+#         logger.info(f"Due to large number of outliers, saved full list to {outlier_file}")
+#         return {"outliers": outliers[:5], "count": len(outliers), "note": "More than 5 outliers, showing first 5"}
+#     else:
+#         return {"outliers": outliers, "count": len(outliers)}
 
 # @function_tool
 # def clustering_analysis(sql_query:str, columns: list[str], n_clusters: int) -> dict:

@@ -77,9 +77,9 @@ Be sure you are under project root (02_DATA_ANALYSIS_AGENT)
 
 ```bash
 # for one time run
-python -m src/main.py "your question"
+python src/main.py "your question"
 # for multi-turn run
-python -m src/main.py
+python src/main.py
 ```
 
 ---
