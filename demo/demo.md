@@ -73,6 +73,9 @@ Can you provide me the trend of quantity along effective month?
 ```
 
 ![Example 5](demo_5.png)
+```text
+Here is the graph store under result folder:
+```
 ![Example 5](trend_0.png)
 ---
 
@@ -108,5 +111,8 @@ Can you do some clustering analysis on the data? (you could ask for some particu
 ```
 
 ![Example 8](demo_8.png)
+```text
+Here is the cluster graph stored under result (Do not interpret the results, just for demo 😄)
+```
 ![Example 8](cluster_0.png)
 
