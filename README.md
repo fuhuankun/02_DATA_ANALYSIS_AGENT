@@ -39,7 +39,8 @@ source .venv/bin/activate   # Linux/Mac
 .venv\Scripts\activate      # Windows
 ```
 ```text
-If you have poetry installed, and you could do 'poetry install' instead, \nbesure you have compatible python shown in toml file.
+If you have poetry installed, and you could do 'poetry install' instead, 
+besure you have compatible python shown in toml file.
 ```
 
 3. Set up environment variables (`.env` or config file):  
@@ -68,7 +69,9 @@ data:
   DATASET_NAME: pipeline_data #you don't need to change this, this is run time data name.
 ```
 ```text
-- Update `DATA_PATH` to your dataset name, you will need to copy your data \nto this folder, it can be csv, parquet, or other format which will be read \nby DuckDB.
+Update `DATA_PATH` to your dataset name, you will need to copy your data 
+to this folder, it can be csv, parquet, or other format which will be read 
+by DuckDB.
 ```
 ---
 
@@ -118,7 +121,7 @@ Check out the full demo session examples 👉 [Demo.md](demo/demo.md)
 ## ✅ Next Steps  
 
 - Make tools more general and robust
-- Add more analysis tools (time series forecasting, regression, \nclassification).  
+- Add more analysis tools (time series forecasting, regression, classification).  
 - Improve guardrails for safety.  
 - Using MCP/ACP for some analysis or information retrieval.
 - Add some evaluations for runtime quality.
