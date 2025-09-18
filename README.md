@@ -38,6 +38,9 @@ bash init.sh  # if your system does not use python3, edit init.sh and replace wi
 source .venv/bin/activate   # Linux/Mac
 .venv\Scripts\activate      # Windows
 ```
+```text
+If you have poetry installed, and you could do 'poetry install' instead, besure you have compatible python shown in toml file.
+```
 
 3. Set up environment variables (`.env` or config file):  
 
