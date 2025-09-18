@@ -106,6 +106,12 @@ python src/main.py
 
 ---
 
+## Demo
+
+Check out the full demo session examples 👉 [Demo.md](demo/demo.md)
+
+---
+
 ## ✅ Next Steps  
 
 - Make tools more general and robust
@@ -114,3 +120,5 @@ python src/main.py
 - Using MCP/ACP for some analysis or information retrieval.
 - Add some evaluations for runtime quality.
 - Expose the system via API or UI for interactive use.  
+
+
